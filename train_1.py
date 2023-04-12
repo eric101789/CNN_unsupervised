@@ -15,6 +15,7 @@ train_generator = train_datagen.flow_from_directory(
     batch_size=batch_size,
     class_mode='binary')
 
+# 讀取驗證集圖像
 val_datagen = tf.keras.preprocessing.image.ImageDataGenerator(rescale=1. / 255)
 val_generator = val_datagen.flow_from_directory(
     'dataset/val_set',
