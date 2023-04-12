@@ -22,33 +22,33 @@ val_generator = val_datagen.flow_from_directory(
     batch_size=batch_size,
     class_mode='binary')
 
-# Initialising the CNN
+# 初始化CNN神經網路
 classifier = Sequential()
 
-# Step 1 - Convolution
+# 新增第一層卷積層
 classifier.add(Convolution2D(32, 3, 3, input_shape=(64, 64, 3), activation='relu'))
 
-# Step 2 - Pooling
+# 新增池化層
 classifier.add(MaxPooling2D(pool_size=(2, 2)))
 
-# Adding a second convolutional layer
+# 新增第二層卷積層
 classifier.add(Convolution2D(32, 3, 3, activation='relu'))
 classifier.add(MaxPooling2D(pool_size=(2, 2)))
 
-# Step 3 - Flattening
+# 新增扁平層
 classifier.add(Flatten())
 
-# Reshaping the output of the previous layer to a 3D tensor
+# 調整上一層的輸出資料為3D張量
 # classifier.add(Reshape((1, -1)))
 
-# Add a LSTM Layer
+# 新增LSTM層
 # classifier.add(LSTM(units=128))
 
-# Step 4 - Full connection
+# 新增全連接層
 classifier.add(Dense(units=128, activation='relu'))
 classifier.add(Dense(units=1, activation='sigmoid'))
 
-# Compiling the CNN
+# 編譯CNN模型
 classifier.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
 
 # 創建CSV文件，並添加表頭
