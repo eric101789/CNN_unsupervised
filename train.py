@@ -7,10 +7,7 @@ image_size = (64, 64, 3)
 batch_size = 32
 
 # 讀取訓練集圖像
-train_datagen = tf.keras.preprocessing.image.ImageDataGenerator(rescale=1. / 255,
-                                                                shear_range=0.2,
-                                                                zoom_range=0.2,
-                                                                horizontal_flip=True)
+train_datagen = tf.keras.preprocessing.image.ImageDataGenerator(rescale=1. / 255)
 train_generator = train_datagen.flow_from_directory(
     'dataset/train_set',
     target_size=(64, 64),
@@ -41,13 +38,13 @@ classifier.add(MaxPooling2D(pool_size=(2, 2)))
 classifier.add(Flatten())
 
 # Reshaping the output of the previous layer to a 3D tensor
-classifier.add(Reshape((1, -1)))
+# classifier.add(Reshape((1, -1)))
 
 # Add a LSTM Layer
-classifier.add(LSTM(units=128))
+# classifier.add(LSTM(units=128))
 
 # Step 4 - Full connection
-# classifier.add(Dense(units=128, activation='relu'))
+classifier.add(Dense(units=128, activation='relu'))
 classifier.add(Dense(units=1, activation='sigmoid'))
 
 # Compiling the CNN
@@ -59,4 +56,4 @@ classifier.fit(train_generator,
                validation_data=val_generator,
                validation_steps=int(3000 / batch_size))
 
-classifier.save('model/train_model_LSTM.h5')
+classifier.save('model/train_model_1.h5')
