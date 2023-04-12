@@ -39,20 +39,20 @@ classifier.add(MaxPooling2D(pool_size=(2, 2)))
 classifier.add(Flatten())
 
 # 調整上一層的輸出資料為3D張量
-# classifier.add(Reshape((1, -1)))
+classifier.add(Reshape((1, -1)))
 
 # 新增LSTM層
-# classifier.add(LSTM(units=128))
+classifier.add(LSTM(units=128))
 
 # 新增全連接層
-classifier.add(Dense(units=128, activation='relu'))
+# classifier.add(Dense(units=128, activation='relu'))
 classifier.add(Dense(units=1, activation='sigmoid'))
 
 # 編譯CNN模型
 classifier.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
 
 # 創建CSV文件，並添加表頭
-csvfile = open('model/training_logs.csv', 'w', newline='')
+csvfile = open('model/training_LSTM_logs.csv', 'w', newline='')
 fieldnames = ['epoch', 'train_loss', 'train_accuracy', 'val_loss', 'val_accuracy']
 writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 writer.writeheader()
