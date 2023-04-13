@@ -1,5 +1,8 @@
+import matplotlib
 import pandas as pd
 import matplotlib.pyplot as plt
+
+# matplotlib.use('TkAgg')
 
 # 讀取預測結果CSV檔案
 df1 = pd.read_csv('result/testing/test_results.csv')
@@ -9,8 +12,18 @@ plt.hist(df1['class_probability'], bins=10)
 plt.xlabel('Probability')
 plt.ylabel('Frame')
 plt.title('Probability Distribution of Test Results')
+plt.savefig('result/testing/test_probability_hist.png')
 plt.show()
-plt.savefig('result/testing/test_probability.png')
+
+
+# 繪製折線圖
+plt.plot(df1['class_probability'])
+# 設置標籤和標題
+plt.xlabel('Sample')
+plt.ylabel('Probability')
+plt.title('Prediction Probability')
+plt.savefig('result/testing/test_probability_plot.png')
+plt.show()
 
 df2 = pd.read_csv('result/testing/test_LSTM_results.csv')
 
@@ -18,5 +31,16 @@ plt.hist(df2['class_probability'], bins=10)
 plt.xlabel('Probability')
 plt.ylabel('Frame')
 plt.title('Probability Distribution of Test LSTM Results')
-plt.show()
 plt.savefig('result/testing/test_LSTN_probability.png')
+plt.show()
+
+
+# 繪製折線圖
+plt.plot(df2['class_probability'])
+# 設置標籤和標題
+plt.xlabel('Sample')
+plt.ylabel('Probability')
+plt.title('Prediction Probability')
+plt.savefig('result/testing/test_LSTM_probability_plot.png')
+plt.show()
+
