@@ -55,13 +55,13 @@ classifier.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accur
 # 創建CSV文件，並添加表頭
 #
 # csvfile = open('result/training/LSTM/training_LSTM_logs.csv', 'w', newline='')
-csvfile = open('result/training/non_LSTM/training_logs.csv', 'w', newline='')
+csvfile = open('result/training/non_LSTM/training_epoch100_logs.csv', 'w', newline='')
 fieldnames = ['epoch', 'train_loss', 'train_accuracy', 'val_loss', 'val_accuracy']
 writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 writer.writeheader()
 
 # 訓練模型並將結果寫入CSV文件
-for epoch in range(50):
+for epoch in range(100):
     history = classifier.fit(train_generator,
                              epochs=1,
                              steps_per_epoch=int(10500 // batch_size),
@@ -80,4 +80,4 @@ csvfile.close()
 
 # 保存模型
 # classifier.save('model/train_model_1.h5')
-classifier.save('model/train_model_1.h5')
+classifier.save('model/train_model_epoch100.h5')

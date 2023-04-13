@@ -5,14 +5,14 @@ import matplotlib.pyplot as plt
 # matplotlib.use('TkAgg')
 
 # 讀取預測結果CSV檔案
-df1 = pd.read_csv('result/testing/test_results.csv')
+df1 = pd.read_csv('result/testing/test_results_1.csv')
 
 # 繪製直方圖
 plt.hist(df1['class_probability'], bins=10)
 plt.xlabel('Probability')
 plt.ylabel('Frame')
 plt.title('Probability Distribution of Test Results')
-plt.savefig('result/testing/test_probability_hist.png')
+plt.savefig('result/testing/test_probability_hist_1.png')
 plt.show()
 
 
@@ -22,16 +22,16 @@ plt.plot(df1['class_probability'])
 plt.xlabel('Sample')
 plt.ylabel('Probability')
 plt.title('Prediction Probability')
-plt.savefig('result/testing/test_probability_plot.png')
+plt.savefig('result/testing/test_probability_plot_1.png')
 plt.show()
 
-df2 = pd.read_csv('result/testing/test_LSTM_results.csv')
+df2 = pd.read_csv('result/testing/test_LSTM_results_1.csv')
 
 plt.hist(df2['class_probability'], bins=10)
 plt.xlabel('Probability')
 plt.ylabel('Frame')
 plt.title('Probability Distribution of Test LSTM Results')
-plt.savefig('result/testing/test_LSTN_probability.png')
+plt.savefig('result/testing/test_LSTM_probability_1.png')
 plt.show()
 
 
@@ -41,6 +41,6 @@ plt.plot(df2['class_probability'])
 plt.xlabel('Sample')
 plt.ylabel('Probability')
 plt.title('Prediction Probability')
-plt.savefig('result/testing/test_LSTM_probability_plot.png')
+plt.savefig('result/testing/test_LSTM_probability_plot_1.png')
 plt.show()
 

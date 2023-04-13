@@ -19,7 +19,7 @@ test_generator = test_datagen.flow_from_dataframe(
     batch_size=batch_size,
     class_mode='binary')
 
-model = tf.keras.models.load_model("model/train_model_1.h5")
+model = tf.keras.models.load_model("model/train_model_epoch100.h5")
 model.summary()
 
 test_output = model.predict(test_generator, batch_size=batch_size, verbose=1)
@@ -31,9 +31,9 @@ class_probabilities = test_output.max(axis=1)
 
 # 將預測結果和機率寫入CSV文件
 results_df = pd.DataFrame({'predicted_class': predicted_classes, 'class_probability': class_probabilities})
-results_df.to_csv('result/testing/test_results.csv', index=False)
+results_df.to_csv('result/testing/test_results_1.csv', index=False)
 
-model1 = tf.keras.models.load_model("model/train_model_LSTM_1.h5")
+model1 = tf.keras.models.load_model("model/train_model_LSTM_epoch100.h5")
 model1.summary()
 
 test_output1 = model1.predict(test_generator, batch_size=batch_size, verbose=1)
@@ -45,4 +45,4 @@ class_probabilities1 = test_output1.max(axis=1)
 
 # 將預測結果和機率寫入CSV文件(LSTM)
 results_df = pd.DataFrame({'predicted_class': predicted_classes1, 'class_probability': class_probabilities1})
-results_df.to_csv('result/testing/test_LSTM_results.csv', index=False)
+results_df.to_csv('result/testing/test_LSTM_results_1.csv', index=False)
