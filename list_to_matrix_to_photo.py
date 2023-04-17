@@ -20,13 +20,13 @@ if __name__ == "__main__":
     """
     This script file demonstrates how to transform raw CSI out from the ESP32 into CSI-amplitude and CSI-phase.
     """
-    FILE_NAME1 = "testing.csv"                    # 原始 csv 檔案
-    PATH = "dataset/test_set/"
+    FILE_NAME1 = "training.csv"                    # 原始 csv 檔案
+    PATH = "dataset1/train_set/"
 
     f1 = open(FILE_NAME1)
 
     loop1 = 0
-    loop_n = 7500                           # 設定總共要輸出多少筆資料
+    loop_n = 11000                           # 設定總共要輸出多少筆資料
 
     for j1, l1 in enumerate(f1.readlines()):
         imaginary1 = []

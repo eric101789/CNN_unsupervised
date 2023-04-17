@@ -54,8 +54,8 @@ classifier.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accur
 
 # 創建CSV文件，並添加表頭
 #
-# csvfile = open('result/training/LSTM/training_LSTM_logs.csv', 'w', newline='')
-csvfile = open('result/training/non_LSTM/training_epoch100_logs.csv', 'w', newline='')
+csvfile = open('result/training/LSTM/training_LSTM_logs.csv', 'w', newline='')
+# csvfile = open('result/training/non_LSTM/training_epoch100_logs.csv', 'w', newline='')
 fieldnames = ['epoch', 'train_loss', 'train_accuracy', 'val_loss', 'val_accuracy']
 writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 writer.writeheader()
