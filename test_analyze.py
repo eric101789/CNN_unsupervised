@@ -25,14 +25,14 @@ import matplotlib.pyplot as plt
 # plt.savefig('result/testing/test_probability_plot_1.png')
 # plt.show()
 
-df2 = pd.read_csv('result/testing/test_LSTM_results_epoch1000.csv')
+df2 = pd.read_csv('result/testing/test_LSTM_results_epoch100_1.csv')
 
 plt.figure(dpi=300)
 plt.hist(df2['class_probability'], bins=10)
 plt.xlabel('Probability')
 plt.ylabel('Frame')
 plt.title('Probability Distribution of Test LSTM Results')
-plt.savefig('result/testing/test_LSTM_probability_epoch1000.png')
+plt.savefig('result/testing/test_LSTM_probability_epoch100_1.png')
 plt.show()
 
 
@@ -43,6 +43,6 @@ plt.plot(df2['class_probability'])
 plt.xlabel('Sample')
 plt.ylabel('Probability')
 plt.title('Prediction Probability')
-plt.savefig('result/testing/test_LSTM_probability_plot_epoch1000.png')
+plt.savefig('result/testing/test_LSTM_probability_plot_epoch100_1.png')
 plt.show()
 
