@@ -56,7 +56,7 @@ classifier.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accur
 # tb_callback = TensorBoard(log_dir='./logs', histogram_freq=1)
 
 history = classifier.fit(train_generator,
-                         epochs=800,
+                         epochs=1000,
                          steps_per_epoch=int(10500 // batch_size),
                          validation_data=val_generator,
                          validation_steps=int(3000 / batch_size),
@@ -72,7 +72,7 @@ plt.xlabel('Epoch')
 plt.ylabel('Loss')
 plt.legend()
 # plt.savefig('result/training/non_LSTM/loss.png')
-plt.savefig('result/training/LSTM/loss_epoch800.png')
+plt.savefig('result/training/LSTM/loss_epoch1000.png')
 plt.show()
 
 
@@ -83,6 +83,6 @@ plt.xlabel('Epoch')
 plt.ylabel('Accuracy')
 plt.legend()
 # plt.savefig('result/training/non_LSTM/acc.png')
-plt.savefig('result/training/LSTM/acc_epoch800.png')
+plt.savefig('result/training/LSTM/acc_epoch1000.png')
 plt.show()
 

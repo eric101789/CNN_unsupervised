@@ -76,13 +76,13 @@ val_generator = val_datagen.flow_from_dataframe(
 #                          # callbacks=[tb_callback]
 #                          )
 
-csvfile = open('result/training/LSTM/training_LSTM_epoch800_logs.csv', 'w', newline='')
+csvfile = open('result/training/LSTM/training_LSTM_epoch900_logs.csv', 'w', newline='')
 fieldnames = ['epoch', 'train_loss', 'train_accuracy', 'val_loss', 'val_accuracy']
 writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 writer.writeheader()
 
 # 訓練模型並將結果寫入CSV文件
-for epoch in range(800):
+for epoch in range(900):
     history = classifier.fit(train_generator,
                              epochs=1,
                              steps_per_epoch=int(10500 // batch_size),
@@ -101,5 +101,5 @@ csvfile.close()
 
 # 保存模型
 # classifier.save('model/train_model_1.h5')
-classifier.save('model/train_model_LSTM_epoch800.h5')
+classifier.save('model/train_model_LSTM_epoch900.h5')
 
