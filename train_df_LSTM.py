@@ -2,8 +2,8 @@ import csv
 
 import tensorflow as tf
 import pandas as pd
-from tensorflow.python.keras import Sequential
-from tensorflow.python.keras.layers import Convolution2D, MaxPooling2D, Flatten, Reshape, LSTM, Dense
+from keras import Sequential
+from tensorflow.python.keras.layers import Conv2D, MaxPooling2D, Flatten, Reshape, LSTM, Dense
 
 # from keras import Sequential
 # from keras.layers import Convolution2D, MaxPooling2D, Flatten, Reshape, LSTM, Dense
@@ -12,13 +12,13 @@ from tensorflow.python.keras.layers import Convolution2D, MaxPooling2D, Flatten,
 classifier = Sequential()
 
 # Step 1 - Convolution
-classifier.add(Convolution2D(32, 3, 3, input_shape=(64, 64, 3), activation='relu'))
+classifier.add(Conv2D(32, (3, 3), input_shape=(64, 64, 1), activation='relu'))
 
 # Step 2 - Pooling
 classifier.add(MaxPooling2D(pool_size=(2, 2)))
 
 # Adding a second convolutional layer
-classifier.add(Convolution2D(32, 3, 3, activation='relu'))
+classifier.add(Conv2D(32, (3, 3), activation='relu'))
 classifier.add(MaxPooling2D(pool_size=(2, 2)))
 
 # Step 3 - Flattening
@@ -76,13 +76,13 @@ val_generator = val_datagen.flow_from_dataframe(
 #                          # callbacks=[tb_callback]
 #                          )
 
-csvfile = open('result/training/LSTM/training_LSTM_epoch900_logs.csv', 'w', newline='')
+csvfile = open('result/training/LSTM/1D_test/training_LSTM_epoch400_1_logs.csv', 'w', newline='')
 fieldnames = ['epoch', 'train_loss', 'train_accuracy', 'val_loss', 'val_accuracy']
 writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 writer.writeheader()
 
 # 訓練模型並將結果寫入CSV文件
-for epoch in range(900):
+for epoch in range(400):
     history = classifier.fit(train_generator,
                              epochs=1,
                              steps_per_epoch=int(10500 // batch_size),
@@ -101,5 +101,5 @@ csvfile.close()
 
 # 保存模型
 # classifier.save('model/train_model_1.h5')
-classifier.save('model/train_model_LSTM_epoch900.h5')
+classifier.save('model/1D_test/train_model_LSTM_epoch400.h5')
 

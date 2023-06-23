@@ -5,7 +5,7 @@ from keras.callbacks import TensorBoard
 from matplotlib import pyplot as plt
 
 # 設定圖像大小和批量大小
-image_size = (64, 64, 3)
+image_size = (64, 64, 1)
 batch_size = 32
 
 # 讀取訓練集圖像
